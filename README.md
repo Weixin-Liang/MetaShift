@@ -101,7 +101,7 @@ Extract the files, and then specify the folder path
 (e.g., `IMAGE_DATA_FOLDER=/data/GQA/allImages/images/`) in [Constants.py](./dataset/Constants.py). 
 
 
-## Generate the Full MetaShift Dataset
+## Generate the Full MetaShift Dataset (subsets defined by contextual objects)
 
 ### Understanding `dataset/meta_data/full-candidate-subsets.pkl`
 The metadata file `dataset/meta_data/full-candidate-subsets.pkl` is the most important piece of metadata of MetaShift, which provides the full subset information of MetaShift. To facilitate understanding, we have provided a notebook `dataset/understanding_full-candidate-subsets-pkl.ipynb` to show how to extract information from it. 
@@ -157,6 +157,78 @@ Beyond the generated MetaShift dataset, the scipt also genervates the meta-graph
     ├── ...         
 ```
 
+## Bonus: Generate the MetaShift-Attributes Dataset (subsets defined by subject attributes)
+
+<p align='center'>
+  <img width='100%' src='./docs/figures/MetaShift-Attributes-Examples.jpg'/>
+<b>Figure: Example Subsets based on object attribute contexts. </b> the attribute is stated in parenthesis). MetaShift
+covers attributes including activity (e.g., sitting, jumping), color (e.g., orange, white), material (e.g., wooden,
+metallic), shape (e.g., round, square), and so on.
+</p>
+
+### Understanding `dataset/attributes_MetaShift/attributes-candidate-subsets.pkl`
+`dataset/attributes_MetaShift/attributes-candidate-subsets.pkl` stores the metadata for MetaShift-Attributes, where each subset is defined by the attribute of the subject, e.g. `cat(orange)`, `cat(white)`, `dog(sitting)`, `dog(jumping)`. 
+
+`attributes-candidate-subsets.pkl` has the same data format as `full-candidate-subsets.pkl`. To facilitate understanding, we have provided a notebook `dataset/attributes_MetaShift/understanding_attributes-candidate-subsets-pkl.ipynb` to show how to extract information from it. 
+
+Basically, the pickle file stores a `collections.defaultdict(set)` object, which contains *4,962* keys. Each key is a string of the subset name like `cat(orange)`, and the corresponding value is a list of the IDs of the images that belong to this subset. The image IDs can be used to retrieve the image files from the Visual Genome dataset that you just downloaded. 
+
+### Understanding `dataset/attributes_MetaShift/structured-attributes-candidate-subsets.pkl`
+`dataset/attributes_MetaShift/structured-attributes-candidate-subsets.pkl` is very similar to `dataset/attributes_MetaShift/attributes-candidate-subsets.pkl`, but stores the metadata in a more structured way. The pickle file stores a 3-level nested dictionary, with the following structure:
+
+```plain
+.
+├── key: 'color'
+    ├── key: 'cat'              
+        ├── key: 'orange'
+            ├── value: a list of image IDs
+├── key: 'activity'
+    ├── key: 'dog'              
+        ├── key: 'sitting'
+            ├── value: a list of image IDs
+        ├── ...
+```
+
+See the full attrribute ontology in `ATTRIBUTE_CONTEXT_ONTOLOGY` in `dataset/Constants.py`
+
+```python
+ATTRIBUTE_CONTEXT_ONTOLOGY = {
+ 'darkness': ['dark', 'bright'],
+ 'dryness': ['wet', 'dry'],
+ 'colorful': ['colorful', 'shiny'],
+ 'leaf': ['leafy', 'bare'],
+ 'emotion': ['happy', 'calm'],
+ 'sports': ['baseball', 'tennis'],
+ 'flatness': ['flat', 'curved'],
+ 'lightness': ['light', 'heavy'],
+ 'gender': ['male', 'female'],
+ 'width': ['wide', 'narrow'],
+ 'depth': ['deep', 'shallow'],
+ 'hardness': ['hard', 'soft'],
+ 'cleanliness': ['clean', 'dirty'],
+ 'switch': ['on', 'off'],
+ 'thickness': ['thin', 'thick'],
+ 'openness': ['open', 'closed'],
+ 'height': ['tall', 'short'],
+ 'length': ['long', 'short'],
+ 'fullness': ['full', 'empty'],
+ 'age': ['young', 'old'],
+ 'size': ['large', 'small'],
+ 'pattern': ['checkered', 'striped', 'dress', 'dotted'],
+ 'shape': ['round', 'rectangular', 'triangular', 'square'],
+ 'activity': ['waiting', 'staring', 'drinking', 'playing', 'eating', 'cooking', 'resting', 
+              'sleeping', 'posing', 'talking', 'looking down', 'looking up', 'driving', 
+              'reading', 'brushing teeth', 'flying', 'surfing', 'skiing', 'hanging'],
+ 'pose': ['walking', 'standing', 'lying', 'sitting', 'running', 'jumping', 'crouching', 
+            'bending', 'smiling', 'grazing'],
+ 'material': ['wood', 'plastic', 'metal', 'glass', 'leather', 'leather', 'porcelain', 
+            'concrete', 'paper', 'stone', 'brick'],
+ 'color': ['white', 'red', 'black', 'green', 'silver', 'gold', 'khaki', 'gray', 
+            'dark', 'pink', 'dark blue', 'dark brown',
+            'blue', 'yellow', 'tan', 'brown', 'orange', 'purple', 'beige', 'blond', 
+            'brunette', 'maroon', 'light blue', 'light brown']
+}
+```
 
 
 
