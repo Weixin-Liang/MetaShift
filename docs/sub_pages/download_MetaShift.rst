@@ -152,9 +152,6 @@ Bonus: Generate the MetaShift-Attributes Dataset (subsets defined by subject att
    **Figure: Example Subsets based on object attribute contexts** 
    (the attribute is stated in parenthesis). MetaShift covers attributes including activity (e.g., sitting, jumping), color (e.g., orange, white), material (e.g., wooden, metallic), shape (e.g., round, square), and so on.
 
-.. raw:: html
-
-   </p>
 
 Understanding ``dataset/attributes_MetaShift/attributes-candidate-subsets.pkl``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
