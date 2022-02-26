@@ -48,11 +48,20 @@ We leveraged the natural heterogeneity of [Visual Genome](https://visualgenome.o
 
 Understanding ``dataset/meta_data/full-candidate-subsets.pkl``
 ------------------------------------------------------------------------
+
 The image IDs for each subset are provided as a Python Dictionary in ``generate_dataset/meta_data/full-candidate-subsets.pkl`` in the Github repo. The Python scpript ``generate_dataset/meta_data/create_MetaShift.py`` provides the code for generating the MetaShift. 
 
 The metadata file ``dataset/meta_data/full-candidate-subsets.pkl`` is the most important piece of metadata of MetaShift, which provides the full subset information of MetaShift. To facilitate understanding, we have provided a notebook ``dataset/understanding_full-candidate-subsets-pkl.ipynb`` to show how to extract information from it. 
 
 Basically, the pickle file stores a ``collections.defaultdict(set)`` object, which contains *17,938* keys. Each key is a string of the subset name like ``dog(frisbee)``, and the corresponding value is a list of the IDs of the images that belong to this subset. The image IDs can be used to retrieve the image files from the Visual Genome dataset that you just downloaded. In our current version, *13,543* out of *17,938* subsets have more than 25 valid images. In addition, ``dataset/meta_data/full-candidate-subsets.pkl`` is drived from the `scene graph annotation <https://nlp.stanford.edu/data/gqa/sceneGraphs.zip>`_, so check it out if your project need additional information about each image. 
+
+
+.. figure:: ../figures/MetaShift-InfoGraphic.jpg
+   :width: 100 %
+   :align: center
+   :alt: 
+
+   **Figure: Infographics of MetaShift.** 
 
 
 
@@ -113,6 +122,126 @@ meta-graphs for each class in ``dataset/meta-graphs``.
            ├──  dog_graph.jpg
            ├──  ...
        ├── ...         
+
+
+.. figure:: ../figures/Cat-MetaGraph.jpg
+   :width: 100 %
+   :align: center
+   :alt: 
+
+   **Figure: Meta-graph for the “Cat” class.** 
+
+
+.. figure:: ../figures/Dog-MetaGraph.jpg
+   :width: 100 %
+   :align: center
+   :alt: 
+
+   **Figure: Meta-graph for the “Dog” class.** 
+
+
+
+Bonus: Generate the MetaShift-Attributes Dataset (subsets defined by subject attributes)
+----------------------------------------------------------------------------------------
+
+.. figure:: ../figures/MetaShift-Attributes-Examples.jpg
+   :width: 100 %
+   :align: center
+   :alt: 
+
+   **Figure: Example Subsets based on object attribute contexts** 
+   (the attribute is stated in parenthesis). MetaShift covers attributes including activity (e.g., sitting, jumping), color (e.g., orange, white), material (e.g., wooden, metallic), shape (e.g., round, square), and so on.
+
+.. raw:: html
+
+   </p>
+
+Understanding ``dataset/attributes_MetaShift/attributes-candidate-subsets.pkl``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``dataset/attributes_MetaShift/attributes-candidate-subsets.pkl`` stores
+the metadata for MetaShift-Attributes, where each subset is defined by
+the attribute of the subject, e.g. ``cat(orange)``, ``cat(white)``,
+``dog(sitting)``, ``dog(jumping)``.
+
+``attributes-candidate-subsets.pkl`` has the same data format as
+``full-candidate-subsets.pkl``. To facilitate understanding, we have
+provided a notebook
+``dataset/attributes_MetaShift/understanding_attributes-candidate-subsets-pkl.ipynb``
+to show how to extract information from it.
+
+Basically, the pickle file stores a ``collections.defaultdict(set)``
+object, which contains *4,962* keys. Each key is a string of the subset
+name like ``cat(orange)``, and the corresponding value is a list of the
+IDs of the images that belong to this subset. The image IDs can be used
+to retrieve the image files from the Visual Genome dataset that you just
+downloaded.
+
+Understanding ``dataset/attributes_MetaShift/structured-attributes-candidate-subsets.pkl``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+``dataset/attributes_MetaShift/structured-attributes-candidate-subsets.pkl``
+is very similar to
+``dataset/attributes_MetaShift/attributes-candidate-subsets.pkl``, but
+stores the metadata in a more structured way. The pickle file stores a
+3-level nested dictionary, with the following structure:
+
+.. code:: plain
+
+   .
+   ├── key: 'color'
+       ├── key: 'cat'              
+           ├── key: 'orange'
+               ├── value: a list of image IDs
+   ├── key: 'activity'
+       ├── key: 'dog'              
+           ├── key: 'sitting'
+               ├── value: a list of image IDs
+           ├── ...
+
+See the full attrribute ontology in ``ATTRIBUTE_CONTEXT_ONTOLOGY`` in
+``dataset/Constants.py``
+
+.. code:: python
+
+   ATTRIBUTE_CONTEXT_ONTOLOGY = {
+    'darkness': ['dark', 'bright'],
+    'dryness': ['wet', 'dry'],
+    'colorful': ['colorful', 'shiny'],
+    'leaf': ['leafy', 'bare'],
+    'emotion': ['happy', 'calm'],
+    'sports': ['baseball', 'tennis'],
+    'flatness': ['flat', 'curved'],
+    'lightness': ['light', 'heavy'],
+    'gender': ['male', 'female'],
+    'width': ['wide', 'narrow'],
+    'depth': ['deep', 'shallow'],
+    'hardness': ['hard', 'soft'],
+    'cleanliness': ['clean', 'dirty'],
+    'switch': ['on', 'off'],
+    'thickness': ['thin', 'thick'],
+    'openness': ['open', 'closed'],
+    'height': ['tall', 'short'],
+    'length': ['long', 'short'],
+    'fullness': ['full', 'empty'],
+    'age': ['young', 'old'],
+    'size': ['large', 'small'],
+    'pattern': ['checkered', 'striped', 'dress', 'dotted'],
+    'shape': ['round', 'rectangular', 'triangular', 'square'],
+    'activity': ['waiting', 'staring', 'drinking', 'playing', 'eating', 'cooking', 'resting', 
+                 'sleeping', 'posing', 'talking', 'looking down', 'looking up', 'driving', 
+                 'reading', 'brushing teeth', 'flying', 'surfing', 'skiing', 'hanging'],
+    'pose': ['walking', 'standing', 'lying', 'sitting', 'running', 'jumping', 'crouching', 
+               'bending', 'smiling', 'grazing'],
+    'material': ['wood', 'plastic', 'metal', 'glass', 'leather', 'leather', 'porcelain', 
+               'concrete', 'paper', 'stone', 'brick'],
+    'color': ['white', 'red', 'black', 'green', 'silver', 'gold', 'khaki', 'gray', 
+               'dark', 'pink', 'dark blue', 'dark brown',
+               'blue', 'yellow', 'tan', 'brown', 'orange', 'purple', 'beige', 'blond', 
+               'brunette', 'maroon', 'light blue', 'light brown']
+   }
+
+
 
 Section 4.2: Evaluating Subpopulation Shifts
 --------------------------------------------
