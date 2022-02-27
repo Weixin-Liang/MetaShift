@@ -1,11 +1,14 @@
 # MetaShift: A Dataset of Datasets for Evaluating Distribution Shifts and Training Conflicts 
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](./LICENSE)
-[![OpenReview](https://img.shields.io/badge/OpenReview-MTex8qKavoS-b31b1b.svg)](https://openreview.net/forum?id=MTex8qKavoS)
+[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://metashift.readthedocs.io/)
+[![Analytics](https://ga-beacon.appspot.com/UA-158040863-4/github.com/Weixin-Liang/MetaShift/README.md?pixel)](https://GitHub.com//Weixin-Liang/MetaShift/)
+[![Documentation Status](https://readthedocs.org/projects/metashift/badge/?version=latest)](http://metashift.readthedocs.io/?badge=latest)
+[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
+[![OpenReview](https://img.shields.io/badge/OpenReview-MTex8qKavoS-green.svg)](https://openreview.net/forum?id=MTex8qKavoS)
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 [![Pytorch](https://img.shields.io/badge/Pytorch-1.8-red.svg)](https://shields.io/)
-
-
+[![Made withJupyter](https://img.shields.io/badge/Made%20with-Jupyter-orange?style=for-the-badge&logo=Jupyter)](https://jupyter.org/try)
+[![GitHub stars](https://img.shields.io/github/stars/Weixin-Liang/MetaShift.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/Weixin-Liang/MetaShift/)
 
 
 This repo provides the PyTorch source code of our paper: 

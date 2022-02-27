@@ -1,6 +1,29 @@
 MetaShift: A Dataset of Datasets for Evaluating Contextual Distribution Shifts and Training Conflicts
 =============================================================================================================
 
+|Website shields.io| |Documentation Status| |License| |OpenReview| |Python 3.6| |Pytorch| |GitHub stars|
+
+
+.. |License| image:: https://img.shields.io/badge/license-MIT-blue.svg
+   :target: https://lbesson.mit-license.org/
+.. |OpenReview| image:: https://img.shields.io/badge/OpenReview-rRMlg4sZQ15-green.svg
+   :target: https://openreview.net/forum?id=rRMlg4sZQ15
+.. |Python 3.6| image:: https://img.shields.io/badge/python-3.6-blue.svg
+   :target: https://www.python.org/downloads/release/python-360/
+.. |Pytorch| image:: https://img.shields.io/badge/Pytorch-1.8-red.svg
+   :target: https://pytorch.org/
+.. |Website shields.io| image:: https://img.shields.io/website-up-down-green-red/http/shields.io.svg
+   :target: https://metashift.readthedocs.io/
+.. |Documentation Status| image:: https://readthedocs.org/projects/metashift/badge/?version=latest
+   :target: http://metashift.readthedocs.io/?badge=latest
+.. |GitHub stars| image:: https://img.shields.io/github/stars/Weixin-Liang/MetaShift.svg?style=social&label=Star&maxAge=2592000
+   :target: https://GitHub.com/Weixin-Liang/MetaShift/
+
+
+Welcome! This is the project website of our paper: `MetaShift: A Dataset of Datasets for Evaluating Contextual Distribution Shifts and Training Conflicts <https://openreview.net/forum?id=MTex8qKavoS>`__ (ICLR 2022). `[PDF] <https://openreview.net/forum?id=MTex8qKavoS>`__
+
+
+
 .. raw:: html
    
    <i class="fa fa-github"></i> View on and Install via <a
