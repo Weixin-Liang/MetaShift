@@ -273,9 +273,9 @@ def generate_splitted_metadaset():
         random.Random(42).shuffle(img_id_list)
         return img_id_list[:truncate]
 
-    cat_outdoor_images = shuffle_and_truncate(test_community_name_to_img_id['cat(outdoor)'], 294) # 150 for test, 0-150 for training
+    cat_outdoor_images = shuffle_and_truncate(test_community_name_to_img_id['cat(outdoor)'], 294) # 144 for test, 0-150 for training
     dog_indoor_images = shuffle_and_truncate(test_community_name_to_img_id['dog(indoor)'], 294) 
-    cat_indoor_images = shuffle_and_truncate(train_community_name_to_img_id['cat(indoor)'], 994) # 150 for test, 450 for training, 
+    cat_indoor_images = shuffle_and_truncate(train_community_name_to_img_id['cat(indoor)'], 994) # 144 for test, 450 for training, 
     dog_outdoor_images = shuffle_and_truncate(train_community_name_to_img_id['dog(outdoor)'], 994) 
 
     with open(SUBPOPULATION_SHIFT_DATASET_FOLDER + '/' + 'imageID_to_group.pkl', 'wb') as handle:
@@ -306,7 +306,7 @@ def generate_splitted_metadaset():
         img_IDs = dog_indoor_test + dog_outdoor_test,
         )
     
-    # plan: 800 training, 
+    # plan: 850 training, 
     NUM_MINORITY_IMG = 100 # 10-150: 10, 50, 100, 150
     copy_images(
         SUBPOPULATION_SHIFT_DATASET_FOLDER, 'train', 'cat', use_symlink=True,

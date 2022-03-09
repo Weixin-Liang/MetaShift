@@ -58,7 +58,7 @@ def print_communities(subject_data, node_name_to_img_id, trainsg_dupes, subject_
 
 
 
-def parse_dataset_scheme(dataset_scheme, node_name_to_img_id, exclude_img_id=set(), split='test'):
+def parse_dataset_scheme(dataset_scheme, node_name_to_img_id, exclude_img_id=set(), split='test', copy=True):
     """
     exclude_img_id contains both trainsg_dupes and test images that we do not want to leak 
     """
@@ -79,14 +79,16 @@ def parse_dataset_scheme(dataset_scheme, node_name_to_img_id, exclude_img_id=set
             for node_name in dataset_scheme[subject_str][community_name]:
                 community_name_to_img_id[community_name].update(node_name_to_img_id[node_name] - exclude_img_id)
                 all_img_id.update(node_name_to_img_id[node_name] - exclude_img_id)
-            print(community_name, 'Size:', len(community_name_to_img_id[community_name]) )
+            if copy:
+                print(community_name, 'Size:', len(community_name_to_img_id[community_name]) )
 
 
         ##################################
         # Iterate community_name: e.g., cat(sofa)
         ##################################
-        root_folder = os.path.join(CUSTOM_SPLIT_DATASET_FOLDER, split)
-        copy_image_for_subject(root_folder, subject_str, dataset_scheme[subject_str], community_name_to_img_id, trainsg_dupes=set(), use_symlink=False) # use False to share 
+        if copy:
+            root_folder = os.path.join(CUSTOM_SPLIT_DATASET_FOLDER, split)
+            copy_image_for_subject(root_folder, subject_str, dataset_scheme[subject_str], community_name_to_img_id, trainsg_dupes=set(), use_symlink=False) # use False to share 
 
     return community_name_to_img_id, all_img_id
 
@@ -197,6 +199,47 @@ def generate_splitted_metadaset():
     print('========== additional test set info ==========')
     additional_test_community_name_to_img_id, additional_test_all_img_id = parse_dataset_scheme(additional_test_set_scheme, node_name_to_img_id, exclude_img_id=train_all_img_id.union(trainsg_dupes), split='test')
 
+
+    ##################################
+    # **Quantifying the distance between train and test subsets**
+    # Please be advised that before making MetaShift public, 
+    # we have made further efforts to reduce the label errors propagated from Visual Genome. 
+    # Therefore, we expect a slight change in the exact experiment numbers.  
+    ##################################
+    
+    print('========== Quantifying the distance between train and test subsets ==========')
+    test_community_name_to_img_id, _ = parse_dataset_scheme(test_set_scheme, node_name_to_img_id, exclude_img_id=trainsg_dupes, split='test', copy=False)
+    train_community_name_to_img_id, _ = parse_dataset_scheme(train_set_scheme, node_name_to_img_id, exclude_img_id=trainsg_dupes, split='train', copy=False)
+    additional_test_community_name_to_img_id, _ = parse_dataset_scheme(additional_test_set_scheme, node_name_to_img_id, exclude_img_id=trainsg_dupes, split='test')
+
+    community_name_to_img_id = test_community_name_to_img_id.copy()
+    community_name_to_img_id.update(train_community_name_to_img_id)
+    community_name_to_img_id.update(additional_test_community_name_to_img_id)
+    dog_community_name_list = sorted(train_set_scheme['dog']) + sorted(test_set_scheme['dog']) + sorted(additional_test_set_scheme['dog'])
+    
+    G = build_subset_graph(dog_community_name_list, community_name_to_img_id, trainsg_dupes=set(), subject_str=None)
+
+    spectral_pos = nx.spectral_layout(
+        G=G, 
+        dim=5,
+        )
+    
+    for subset_A, subset_B in [
+        ['dog(cabinet)', 'dog(bed)'],
+        ['dog(bag)', 'dog(box)'],
+        ['dog(bench)', 'dog(bike)'],
+        ['dog(boat)', 'dog(surfboard)'],
+    ]:
+        distance_A = np.linalg.norm(spectral_pos[subset_A.replace('(', '\n(')] - spectral_pos['dog\n(shelf)'])
+        distance_B = np.linalg.norm(spectral_pos[subset_B.replace('(', '\n(')] - spectral_pos['dog\n(shelf)'])
+        
+        print('Distance from {}+{} to {}: {}'.format(
+            subset_A, subset_B, 'dog(shelf)', 
+            0.5 * (distance_A + distance_B)
+            )
+        )
+
+        
     return
 
 if __name__ == '__main__':
