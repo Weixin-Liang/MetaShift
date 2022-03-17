@@ -1,6 +1,7 @@
 dataset/meta-graphs/*.jpg
 *.csv 
 *.zip
+experiments/distribution_shift/train_output/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

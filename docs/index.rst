@@ -20,7 +20,10 @@ MetaShift: A Dataset of Datasets for Evaluating Contextual Distribution Shifts a
    :target: https://GitHub.com/Weixin-Liang/MetaShift/
 
 
-Welcome! This is the project website of our paper: `MetaShift: A Dataset of Datasets for Evaluating Contextual Distribution Shifts and Training Conflicts <https://openreview.net/forum?id=MTex8qKavoS>`__ (ICLR 2022). `[PDF] <https://openreview.net/forum?id=MTex8qKavoS>`__
+Welcome! This is the project website of our paper: `MetaShift: A Dataset of Datasets for Evaluating Contextual Distribution Shifts and Training Conflicts <https://openreview.net/forum?id=MTex8qKavoS>`__ (ICLR 2022). 
+`[PDF] <https://arxiv.org/abs/2202.06523>`__
+`[Video] <https://recorder-v3.slideslive.com/#/share?share=64243&s=4b8a00e2-83f3-4775-879f-70de42374ec6>`__
+`[Slides] <https://drive.google.com/file/d/1PDQSrNQWAJL_cx-KpV1CchUJwk2MgPFC/view?usp=sharing>`__
 
 
 

@@ -13,7 +13,9 @@
 
 This repo provides the PyTorch source code of our paper: 
 [MetaShift: A Dataset of Datasets for Evaluating Contextual Distribution Shifts and Training Conflicts](https://openreview.net/forum?id=MTex8qKavoS) (ICLR 2022). 
-[[PDF]](https://openreview.net/forum?id=MTex8qKavoS)
+[[PDF]](https://arxiv.org/abs/2202.06523)
+[[ICLR 2022 Video]](https://recorder-v3.slideslive.com/#/share?share=64243&s=4b8a00e2-83f3-4775-879f-70de42374ec6)
+[[Slides]](https://drive.google.com/file/d/1PDQSrNQWAJL_cx-KpV1CchUJwk2MgPFC/view?usp=sharing)
 
 **Project website:** https://MetaShift.readthedocs.io/ 
 
