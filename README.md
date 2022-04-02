@@ -1,7 +1,6 @@
 # MetaShift: A Dataset of Datasets for Evaluating Distribution Shifts and Training Conflicts 
 
 [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://metashift.readthedocs.io/)
-[![Analytics](https://ga-beacon.appspot.com/UA-158040863-4/github.com/Weixin-Liang/MetaShift/README.md?pixel)](https://GitHub.com//Weixin-Liang/MetaShift/)
 [![Documentation Status](https://readthedocs.org/projects/metashift/badge/?version=latest)](http://metashift.readthedocs.io/?badge=latest)
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 [![OpenReview](https://img.shields.io/badge/OpenReview-MTex8qKavoS-green.svg)](https://openreview.net/forum?id=MTex8qKavoS)
@@ -16,6 +15,8 @@ This repo provides the PyTorch source code of our paper:
 [[PDF]](https://arxiv.org/abs/2202.06523)
 [[ICLR 2022 Video]](https://recorder-v3.slideslive.com/#/share?share=64243&s=4b8a00e2-83f3-4775-879f-70de42374ec6)
 [[Slides]](https://drive.google.com/file/d/1PDQSrNQWAJL_cx-KpV1CchUJwk2MgPFC/view?usp=sharing)
+[[Hugging Face Datasets]](https://huggingface.co/datasets/metashift)
+
 
 **Project website:** https://MetaShift.readthedocs.io/ 
 
