@@ -15,7 +15,7 @@ This repo provides the PyTorch source code of our paper:
 [[PDF]](https://arxiv.org/abs/2202.06523)
 [[ICLR 2022 Video]](https://recorder-v3.slideslive.com/#/share?share=64243&s=4b8a00e2-83f3-4775-879f-70de42374ec6)
 [[Slides]](https://drive.google.com/file/d/1PDQSrNQWAJL_cx-KpV1CchUJwk2MgPFC/view?usp=sharing)
-[[Hugging Face Datasets]](https://huggingface.co/datasets/metashift)
+[[HuggingFace]](https://huggingface.co/datasets/metashift)
 
 
 **Project website:** https://MetaShift.readthedocs.io/ 
