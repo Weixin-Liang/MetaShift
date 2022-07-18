@@ -111,15 +111,15 @@ The geometry of MetaGraphs provides a way to quantify the distances of shifts ac
 
    **Figure: Example subsets based on object attributes.** 
 
-Citation
---------
+.. Citation
+.. --------
 
-.. code-block:: bibtex
+.. .. code-block:: bibtex
 
-   @InProceedings{liang2022metashift,
-   title={MetaShift: A Dataset of Datasets for Evaluating Contextual Distribution Shifts and Training Conflicts},
-   author={Weixin Liang and James Zou},
-   booktitle={International Conference on Learning Representations},
-   year={2022},
-   url={https://openreview.net/forum?id=MTex8qKavoS}
-   }
+..    @InProceedings{liang2022metashift,
+..    title={MetaShift: A Dataset of Datasets for Evaluating Contextual Distribution Shifts and Training Conflicts},
+..    author={Weixin Liang and James Zou},
+..    booktitle={International Conference on Learning Representations},
+..    year={2022},
+..    url={https://openreview.net/forum?id=MTex8qKavoS}
+..    }
