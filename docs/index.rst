@@ -63,7 +63,7 @@ Abstract
 What is :samp:`MetaShift`?
 --------------------------------
 The :samp:`MetaShift` is a collection of subsets of data together with an annotation graph that explains the similarity/distance between two subsets (edge weight) as well as what is unique about each subset (node metadata). For each class, say “cat”, we have many subsets of cats, and we can think of each subset as a node in the graph. Each subset corresponds to “cat” in a different context: e.g. “cat with sink” or “cat with fence”. The context of each subset is the node metadata. The “cat with sink” subset is more similar to “cat with faucet” subset because there are many images that contain both sink and faucet. This similarity is the weight of the node; higher weight means the contexts of the two nodes tend to co-occur in the same data. 
-
+Each class also has is also associated with a meta-graph. 
 
 .. figure:: ./figures/MetaShift-InfoGraphic.jpg
    :width: 100 %
