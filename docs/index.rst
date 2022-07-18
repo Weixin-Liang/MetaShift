@@ -41,8 +41,8 @@ Walkthroughs
 .. toctree::
    sub_pages/download_MetaShift
    sub_pages/example_images
-   sub_pages/applications
-   sub_pages/matching_to_ImageNet
+   .. sub_pages/applications
+   .. sub_pages/matching_to_ImageNet
 
 
 .. figure:: ./figures/MetaShift-Examples.jpg
